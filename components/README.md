@@ -18,4 +18,4 @@
   - [X] Humedity sensor
   - [X] Operation theory
   - [ ] Power source
-  - [ ] Network connection
+ - [ ] Network connection
