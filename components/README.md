@@ -5,7 +5,7 @@
   - [ ] Android application
   - [ ] HTML application
  - [ ] [IrrigationController](https://github.com/meena-erian/SmarF/tree/master/components/IrrigationController)
-  - [X] Operation theory
+  - [ ] Operation theory
   - [ ] Power source
   - [ ] Network connection
  - [ ] [SoilSensor](https://github.com/meena-erian/SmarF/tree/master/components/SoilSensor)
