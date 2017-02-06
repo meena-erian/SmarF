@@ -1,14 +1,14 @@
 #All projet components will be listed and documented here.
- - [ ] API
+ - [ ] [API](https://github.com/meena-erian/SmarF/tree/master/components/API)
   - [ ] Database structure
   - [ ] JSON API
   - [ ] Android application
   - [ ] HTML application
- - [ ] IrrigationController
+ - [ ] [IrrigationController](https://github.com/meena-erian/SmarF/tree/master/components/IrrigationController)
   - [X] Operation theory
   - [ ] Power source
   - [ ] Network connection
- - [ ] SoilSensor
+ - [ ] [SoilSensor](https://github.com/meena-erian/SmarF/tree/master/components/SoilSensor)
   - [X] Humidity sensor
   - [X] Operation theory
   - [ ] Power source
