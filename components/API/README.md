@@ -52,7 +52,7 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
 ---
 ---
 
-##Operation rules
+##Operation Rules
 - Once a device is created and ready for sale, it's saved to the database.
 - Any anonymous person can create a user account just by email verification.
 - Any user can add any device to their account as long as they provide its id and password.
@@ -60,7 +60,7 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
 - The first device owner of an irrigation controler can edit its settings.
 
 
-##mobile JSON API
+##Mobile JSON API
 When any web browser requests the domain name, the server responds by the HTML version of the application; When the mobile application requests the domain name, the server responds by a JSON.
 
 The mobile application sends the parameter ```command``` with each request, it can be any of the following values:
