@@ -10,7 +10,7 @@ The data base contains the following two lists of data:
   "id" : USER ID,
   "name" : USER NAME,
   "password" : USER PASSWORD,
-  "dateAdded" : DATA,
+  "dateAdded" : DATE,
   "devices" : [{"deviceId" : DEVICE ID, "dateAdded" : TIMESTAMP}, {"deviceId" : DEVICE ID, "dateAdded" : TIMESTAMP} ...]
 }
 ```
