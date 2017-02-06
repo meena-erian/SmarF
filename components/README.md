@@ -1,21 +1,15 @@
 #All projet components will be listed and documented here.
  - [ ] API
   - [ ] Database structure
-   - Users table
-   - Devices table
   - [ ] JSON API
   - [ ] Android application
-   - [ ] API implementation
-   - [ ] User interface
   - [ ] HTML application
-   - [ ] API implementation
-   - [ ] User interface
  - [ ] IrrigationController
   - [X] Operation theory
   - [ ] Power source
   - [ ] Network connection
  - [ ] SoilSensor
-  - [X] Humedity sensor
+  - [X] Humidity sensor
   - [X] Operation theory
   - [ ] Power source
- - [ ] Network connection
+  - [ ] Network connection
