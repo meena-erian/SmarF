@@ -4,6 +4,7 @@
   - [ ] JSON API
   - [ ] Android application
   - [ ] HTML application
+  - [ ] Website/Application logo/theme
  - [ ] [IrrigationController](https://github.com/meena-erian/SmarF/tree/master/components/IrrigationController)
   - [ ] Operation theory
   - [ ] Power source
