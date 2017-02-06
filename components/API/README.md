@@ -54,6 +54,7 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
 
 ##Operation Rules
 - Once a device is created and ready for sale, it's saved to the database.
+- Each customer receives id and password for each device. They can either enter it manually to the application or scan it as a QR code.
 - Any anonymous person can create a user account just by email verification.
 - Any user can add any device to their account as long as they provide its id and password.
 - The first device owner can update its password; If two users owns the same device and the newer user requeted password change for the device, The original user will be notified about the date, location, and time of the request and the newer user will be asked for more credentials.
