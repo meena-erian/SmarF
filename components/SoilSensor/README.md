@@ -1,10 +1,10 @@
 #Soil Sensor
 
-##Humidity sensor
+###Humidity sensor
 The humedity sensor will depend on electric connectivity for measuring soil humidity.
-##Operation theory
+###Operation theory
 The device sends readings to the server periodically where the periodic time for each reading is saved on the device and can be edited by the server.
-##Power source
+###Power source
 Undecided!
-##Network connection
+###Network connection
 Undecided!
