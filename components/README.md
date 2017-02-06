@@ -1,8 +1,8 @@
 #All projet components will be listed and documented here.
  - [ ] API
   - [ ] Database structure
-   - [ ] Users table
-   - [ ] Devices table
+   - Users table
+   - Devices table
   - [ ] JSON API
   - [ ] Android application
    - [ ] API implementation
