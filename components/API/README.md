@@ -1,4 +1,7 @@
 #Server-Side API
+
+{2:6}(DevicesCommonJSON.js)
+
 It will be a single php webpage that the mobile application or any web browser can use to access our service.
 
 ##Database structure
