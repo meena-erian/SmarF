@@ -16,7 +16,7 @@
           <iframe src="UserJSON.txt" width="100%"></iframe>
         <h3>Devices common JSON data</h3>
           <iframe src="DevicesCommonJSON.txt" width="100%"></iframe>
-        <p>Where all upper case words will be replaced by equivalent values. And **PER_TYPE_DATA** in Devices data will be replaced by one of the following.</p>
+        <p>Where all upper case words will be replaced by equivalent values. And <b>PER_TYPE_DATA</b> in Devices data will be replaced by one of the following.</p>
           <h4>Soil Sensor data</h4>
             <iframe src="SoilSensorJSON.txt" width="100%"></iframe>
           <h4>Irrigation Controller data</h4>
@@ -40,23 +40,23 @@
       <h2>Mobile JSON API</h2>
 <p>When any web browser requests the domain name, the server responds by the HTML version of the application; When the mobile application requests the domain name, the server responds by a JSON.</p>
 
-<p>The mobile application sends the parameter ```command``` with each request, it can be any of the following values:<p>
+    <p>The mobile application sends the parameter <b>command</b> with each request, it can be any of the following values:<p>
     <ul>
       <li> <b>query</b><br>
     The application uses this command to read data of a deviece owned by the requesting user.<br>
     This command requires the additional parameters: <b>deviceId</b>, <b>devicePassword</b>, and <b>query<b/>.<br>
     Where <b>query</b> is one or more comma separated keys of the data being requested.
       </li>
-      <li>
       <li> <b>edit</b><br>
   The application uses this command to edit some attributes/settings of a device owned by the requesting user.<br>
         This command requires the additional parameters: <b>deviceId</b> and <b>userName</b>, <b>userPassword</b>, and the data being updated.<br>
       </li>
-      <li> <b>add<b><br>
+      <li> <b>add</b><br>
   The application uses this command to register a device to the requesting user.<br>
         This command requires the additional parameters: <b>deviceId</b>, <b>devicePassword</b>, <b>userName</b>, and <b>userPassword</b>.<br>
-        <li> <b>remove</b>
-        </li>
+      </li>
+      <li> <b>remove</b>
+      </li>
     </ul>
   </body>
 </html>
