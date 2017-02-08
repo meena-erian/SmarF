@@ -1,0 +1,4 @@
+{
+  "updateFrequency" : "10 mins",
+  "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "humidity" : HUMIDITY}, {"time" : TIMESTAMP, "location" : LOCATION, "humidity" : HUMIDITY}, ...]
+}
