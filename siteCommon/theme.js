@@ -1,7 +1,7 @@
 var numberOfActiveHTTPRequests = 0;
 function include(link, container) {
   numberOfActiveHTTPRequests++;
-  part = new XMLHttpRequest());
+  part = new XMLHttpRequest();
   part.open('GET', link);
   part.onload = function() {
     container.innerHTML += part.responseText;
