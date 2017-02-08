@@ -1,3 +1,43 @@
 h1 {
  text-align : center;
 }
+.paper{
+	position:relative;
+	background: white;
+	border: 1px solid gray;
+	box-shadow: 0px 0px 10px gray;
+	color: #4614A0;
+	max-width: 1000px;
+	min-height: 1500px;
+	text-align:center;
+	margin: 10% auto 50px;
+	padding: 0 3% 50px 3%;
+}
+.paper .paper{
+	min-height: 0px;
+	margin: 5% 1%;
+	padding: 10px 3% 20px;
+}
+body{margin:0px;}
+.paper .paper p {
+	margin-bottom:25px;
+}
+
+.footer{
+	position:absolute;
+ background: lightgray;
+	bottom:0px;
+	right:0px;
+	left:0px;
+	width:100%;
+	text-align:center;
+	vertical-align:center;
+	height:50px;
+}
+.hr1 {
+	border:0px;
+	height:1px;
+	width:90%;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0),  #4614A0 , rgba(0, 0, 0, 0));
+}
+
