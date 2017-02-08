@@ -1,4 +1,4 @@
-function include(var link, var container) {
+function include(link, container) {
   var part = new XMLHttpRequest();
   part.open('GET', link);
   part.onload = function() {
