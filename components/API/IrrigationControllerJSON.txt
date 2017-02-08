@@ -1,0 +1,10 @@
+{
+  "state" : ON/OFF,
+  "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}, {"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}],
+  "settings" : {
+    "switchingSystems" : {"periodically" : ENABLED/DISABLED, "byReference" : ENABLED/DISABLED, "auto" : ENABLED/DISABLED},
+    "referenceHumidity" : "60%",
+    "irrigationStartTime" : "06:00:00AM",
+    "irrigationEndTime" : "06:04:30"
+  }
+}
