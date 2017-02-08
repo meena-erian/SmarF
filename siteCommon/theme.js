@@ -6,4 +6,5 @@ function include(link, container) {
   }
   part.send();
 }
-include('/Smarf/siteCommon/commonSiteHeader.html', document.head);
+include('/SmarF/siteCommon/commonSiteHeader.html', document.head);
+include('/SmarF/siteCommon/commonSiteFooter.html', document.body);
