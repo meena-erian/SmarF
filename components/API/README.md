@@ -1,6 +1,6 @@
 #Server-Side API
 
-{2:6}(DevicesCommonJSON.js)
+<iframe src="DevicesCommonJSON.txt" width=200 height=400 frameborder=0 ></iframe>
 
 It will be a single php webpage that the mobile application or any web browser can use to access our service.
 
