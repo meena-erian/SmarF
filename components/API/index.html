@@ -2,44 +2,28 @@
 <html>
   <head>
     <title> API | SmarF</title>
+    <link rel="icon" type="image/x-icon" href="https://assets-cdn.github.com/favicon.ico">
     <style>
       
     </style>
   </head>
   <body>
-    <h1>Server-Side API<h1>
+    <h1>Server-Side API</h1><hr>
       <p>It will be a single php webpage that the mobile application or any web browser can use to access our service.</p>
     <h2>Database structure</h2>
       <p>The data base contains the following two lists of data:</p>
         <h3>Users JSON data</h3>
-          <iframe src="UserJSON.txt"></iframe>
+          <iframe src="UserJSON.txt" width="100%"></iframe>
         <h3>Devices common JSON data</h3>
-          <iframe src="DeviceCommonJSON.txt"></iframe>
+          <iframe src="DevicesCommonJSON.txt" width="100%"></iframe>
         <p>Where all upper case words will be replaced by equivalent values. And **PER_TYPE_DATA** in Devices data will be replaced by one of the following.</p>
-
-      <h4>Soil Sensor data</h4>
-```JSON
-{
-  "updateFrequency" : "10 mins",
-  "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "humidity" : HUMIDITY}, {"time" : TIMESTAMP, "location" : LOCATION, "humidity" : HUMIDITY}, ...]
-}
-```
-      <h4>Irrigation Controller data</h4>
-```JSON
-{
-  "state" : ON/OFF,
-  "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}, {"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}],
-  "settings" : {
-    "switchingSystems" : {"periodically" : ENABLED/DISABLED, "byReference" : ENABLED/DISABLED, "auto" : ENABLED/DISABLED},
-    "referenceHumidity" : "60%",
-    "irrigationStartTime" : "06:00:00AM",
-    "irrigationEndTime" : "06:04:30"
-  }
-}
-```
-
----
----
+          <h4>Soil Sensor data</h4>
+            <iframe src="SoilSensorJSON.txt" width="100%"></iframe>
+          <h4>Irrigation Controller data</h4>
+            <iframe src="IrrigationControllerJSON.txt" width="100%"></iframe>
+    
+<hr>
+<hr>
 
       <h4>Operation Rules</h4>
       <ul>
@@ -51,20 +35,28 @@
         <li> The first device owner of an irrigation controler can edit its settings.</li>
       </ul>
 
+    <hr>
+    
       <h2>Mobile JSON API</h2>
 <p>When any web browser requests the domain name, the server responds by the HTML version of the application; When the mobile application requests the domain name, the server responds by a JSON.</p>
 
-The mobile application sends the parameter ```command``` with each request, it can be any of the following values:
-- ```query```
-  The application uses this command to read data of a deviece owned by the requesting user.
-    This command requires the additional parameters: ```deviceId```, ```devicePassword```, and ```query```.
-    Where ```query``` is one or more comma separated keys of the data being requested.
-- ```edit```
-  The application uses this command to edit some attributes/settings of a device owned by the requesting user.
-    This command requires the additional parameters: ```deviceId``` and ```userName```, ```userPassword```, and the data being updated.
-- ```add```
-  The application uses this command to register a device to the requesting user.
-    This command requires the additional parameters: ```deviceId```, ```devicePassword```, ```userName```, and ```userPassword```.
-- ```remove```
+<p>The mobile application sends the parameter ```command``` with each request, it can be any of the following values:<p>
+    <ul>
+      <li> <b>query</b><br>
+    The application uses this command to read data of a deviece owned by the requesting user.<br>
+    This command requires the additional parameters: <b>deviceId</b>, <b>devicePassword</b>, and <b>query<b/>.<br>
+    Where <b>query</b> is one or more comma separated keys of the data being requested.
+      </li>
+      <li>
+      <li> <b>edit</b><br>
+  The application uses this command to edit some attributes/settings of a device owned by the requesting user.<br>
+        This command requires the additional parameters: <b>deviceId</b> and <b>userName</b>, <b>userPassword</b>, and the data being updated.<br>
+      </li>
+      <li> <b>add<b><br>
+  The application uses this command to register a device to the requesting user.<br>
+        This command requires the additional parameters: <b>deviceId</b>, <b>devicePassword</b>, <b>userName</b>, and <b>userPassword</b>.<br>
+        <li> <b>remove</b>
+        </li>
+    </ul>
   </body>
 </html>
