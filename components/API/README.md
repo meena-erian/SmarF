@@ -1,8 +1,7 @@
 #Server-Side API
 
-<iframe src="DevicesCommonJSON.txt" width=200 height=400 frameborder=0 ></iframe>
-
 It will be a single php webpage that the mobile application or any web browser can use to access our service.
+I'm working on an [HTML mirror for this documentation](https://meena-erian.github.io/SmarF/components/API/)
 
 ##Database structure
 The data base contains the following two lists of data:
