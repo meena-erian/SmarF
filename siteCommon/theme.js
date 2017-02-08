@@ -7,4 +7,4 @@ function include(link, container) {
   part.send();
 }
 include('/SmarF/siteCommon/commonSiteHeader.html', document.head);
-include('/SmarF/siteCommon/commonSiteFooter.html', document.body);
+include('/SmarF/siteCommon/commonSiteFooter.html', document.getElementsByClassName("paper")[0]);
