@@ -1,7 +1,9 @@
-var part = new XMLHttpRequest();
-part.open('GET', '/Smarf/siteCommon/commonSiteHeader.html');
-part.onload = function() {
-  document.head.innerHTML += part.responseText;
+function include(var link, var container) {
+  var part = new XMLHttpRequest();
+  part.open('GET', link);
+  part.onload = function() {
+    container.innerHTML += part.responseText;
+  }
+  part.send();
 }
-client.send();
- 
+include('/Smarf/siteCommon/commonSiteHeader.html', document.head);
