@@ -12,8 +12,8 @@ function include(link, container, prepend=0) {
 }
 
 include('/SmarF/siteCommon/commonSiteHeader.html', document.head);
-include('/SmarF/siteCommon/commonSiteFooter.html', document.getElementsByClassName("paper")[0]);
-include('/SmarF/siteCommon/commonSiteNav.html', document.getElementsByClassName("paper")[0], 1);
+include('/SmarF/siteCommon/commonSiteFooter.html', document.body);
+include('/SmarF/siteCommon/commonSiteNav.html', document.body, 1);
 
 function createBreadCrumbs() {
 	var address = document.URL;
