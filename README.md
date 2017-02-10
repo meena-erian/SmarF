@@ -8,6 +8,6 @@ I'm currently woking on an unofficial temporrary [website](https://meena-erian.g
  - [ ] Uploding icon.ico file for the website logo.
  - [ ] Designing website theme and colors possibliy in jpg formate. (it must include navigation, header, and footer sections)
  - [ ] Defining communication protocol between soil sensors and the server.
- - [ ] Enstablishing connection between soil sensors and the server.
+ - [X] Enstablishing connection between soil sensors and the server.
  - [ ] Determining best network connection devices.
  - [ ] Determining best power source for products.
