@@ -6,8 +6,9 @@ I'm currently woking on an unofficial temporrary [website](https://meena-erian.g
 
 ###Some tasks that needs to be done ASAP.
  - [ ] Uploding icon.ico file for the website logo.
- - [ ] Designing website theme and colors possibliy in jpg formate. (it must include navigation, header, and footer sections)
- - [ ] Defining communication protocol between soil sensors and the server.
  - [X] Enstablishing connection between soil sensors and the server.
+ - [ ] Defining communication protocol between the soil sensors and the server.
+ - [ ] Defining communication protocol between the mobile application and the server.
+ - [ ] Designing website theme and colors possibliy in jpg formate. (it must include navigation, header, and footer sections)
  - [ ] Determining best network connection devices.
  - [ ] Determining best power source for products.
