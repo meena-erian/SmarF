@@ -1,5 +1,5 @@
 var numberOfActiveHTTPRequests = 0;
-function include(link, container, prepend=False) {
+function include(link, container, prepend=0) {
   numberOfActiveHTTPRequests++;
   var part = new XMLHttpRequest();
   part.open('GET', link);
@@ -18,7 +18,7 @@ include('/SmarF/siteCommon/commonSiteNav.html', document.getElementsByClassName(
 function createBreadCrumbs() {
 	var address = document.URL;
 	address = address.split('/');
-	address = address.slice(2, address.length-1);
+	address = address.slice(3, address.length-1);
 	address[0]  = 'Root';
 
 	var headerNav = document.getElementById('header-nav');
