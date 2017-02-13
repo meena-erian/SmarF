@@ -71,8 +71,9 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
 When any web browser requests the domain name, the server responds by the HTML version of the application; When the mobile application requests the domain name, the server responds by a JSON.
 
 The mobile application sends the parameter ```command``` with each request, it can be any of the following values:
+
 - ```query``` 
-  The application uses this command to read data of a deviece owned by the requesting user.
+The application uses this command to read data of a deviece owned by the requesting user.
     This command requires the additional parameters: ```userName```, ```userPassword```, ```deviceId```, and ```query```.
     Where ```query``` is one or more comma separated keys of the data being requested.
     
@@ -97,7 +98,7 @@ The mobile application sends the parameter ```command``` with each request, it c
      {"responseType":"data","content":45}
      ```
 - ```edit```
-  The application uses this command to edit some attributes/settings of a device owned by the requesting user.
+ The application uses this command to edit some attributes/settings of a device owned by the requesting user.
     This command requires the additional parameters: ```userName```, ```userPassword```, ```deviceId```, and the data being updated.
     
     Examples: (Only for irrigation controller)
