@@ -72,8 +72,7 @@ When any web browser requests the domain name, the server responds by the HTML v
 
 The mobile application sends the parameter ```command``` with each request, it can be any of the following values:
 
-- **query** 
-  The application uses this command to read data of a deviece owned by the requesting user.
+- ```query``` The application uses this command to read data of a deviece owned by the requesting user.
     This command requires the additional parameters: ```userName```, ```userPassword```, ```deviceId```, and ```query```.
     Where ```query``` is one or more comma separated keys of the data being requested.
     
@@ -97,16 +96,14 @@ The mobile application sends the parameter ```command``` with each request, it c
      ```JSON
      {"responseType":"data","content":45}
      ```
-- ```edit```
- The application uses this command to edit some attributes/settings of a device owned by the requesting user.
+- ```edit``` The application uses this command to edit some attributes/settings of a device owned by the requesting user.
     This command requires the additional parameters: ```userName```, ```userPassword```, ```deviceId```, and the data being updated.
     
     Examples: (Only for irrigation controller)
     - ```irrigation=ON```
     - ```referenceHumidity=70``` sets the reference humidity (the percentage value is parsed as integer and the character '%' should not be appended)
     - ```switchingSystems=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45```
-- ```add```
-  The application uses this command to register a device to the requesting user.
+- ```add``` The application uses this command to register a device to the requesting user.
     This command requires the additional parameters: ```deviceId```, ```devicePassword```, ```userName```, and ```userPassword```.
 - ```remove```
 Note that all commands are case-sensitive!
