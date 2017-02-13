@@ -72,11 +72,12 @@ When any web browser requests the domain name, the server responds by the HTML v
 
 The mobile application sends the parameter ```command``` with each request, it can be any of the following values:
 
-- ```query``` The application uses this command to read data of a deviece owned by the requesting user.
-    This command requires the additional parameters: ```userName```, ```userPassword```, ```deviceId```, and ```query```.
-    Where ```query``` is one or more comma separated keys of the data being requested.
-    
-    - Examples:
+- ```query``` The application uses this command to read data. It requires the query parameters ```userName```, ```userPassword``` and ```query``` for reading user data; Reading data of user devices require the additional parameter ```deviceId``` in addition to the previouse parameters.
+    Where ```query``` can be set as in the following examples.
+    - Examples for user data:
+     - ```query=devices``` returns an JSON array of the devices associated with the given user.
+     
+    - Examples for any device:
      - ```query=type``` returns the type of the device (SOIL_SENSOR or IRRIGATION_CONTROLLER)
      - ```query=dateAdded``` returns the manufacturing date of the device 
     
@@ -86,6 +87,7 @@ The mobile application sends the parameter ```command``` with each request, it c
      - ```query=history.length``` returns the number of samples saved on the server for this device.
      - ```query=history[INDEX]``` returns the sample pointed to in the array by the integer value INDEX.
      - ```query=history[FROM:TO]``` returns the sub-array list of samples starting from index FROM till index TO (inclusively).
+     
     - Examples for irrigation controller:
      - ```query=irrigation``` returns either ON or OFF
      - ```query=switchingSystems``` returns something like 
