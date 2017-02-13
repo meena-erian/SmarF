@@ -72,7 +72,7 @@ When any web browser requests the domain name, the server responds by the HTML v
 
 The mobile application sends the parameter ```command``` with each request, it can be any of the following values:
 
-- ```query``` The application uses this command to read data. It requires the query parameters ```userName```, ```userPassword``` and ```query``` for reading user data; Reading data of user devices require the additional parameter ```deviceId``` in addition to the previouse parameters.
+- ```query``` The application uses this command to read data. It requires the query parameters ```userId```, ```userPassword``` and ```query``` for reading user data; Reading data of user devices require the additional parameter ```deviceId``` in addition to the previouse parameters.
     Where ```query``` can be set as in the following examples.
     - Examples for user data:
      - ```query=devices``` returns an JSON array of the devices associated with the given user.
