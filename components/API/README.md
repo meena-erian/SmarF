@@ -23,7 +23,7 @@ The data base contains the following two lists of data:
   "id" : DEVICE ID,
   "password" : DEVICE PASSWORD,
   "dateAdded" : DATE,
-  "type" : SOIL SENSOR/IRRIGATION CONTROLLER/...,
+  "type" : SOIL_SENSOR/IRRIGATION_CONTROLLER/...,
   PER_TYPE_DATA
 }
 ```
@@ -40,14 +40,12 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
 ####Irrigation Controller data
 ```JSON
 {
-  "state" : ON/OFF,
+  "irrigation" : ON/OFF,
   "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}, {"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}],
-  "settings" : {
-    "switchingSystems" : {"periodically" : ENABLED/DISABLED, "byReference" : ENABLED/DISABLED, "auto" : ENABLED/DISABLED},
-    "referenceHumidity" : "60%",
-    "irrigationStartTime" : "06:00:00AM",
-    "irrigationEndTime" : "06:04:30"
-  }
+  "switchingSystems" : PERIODICALLY/BYREFERENCE/AUTO,
+  "referenceHumidity" : "60%",
+  "irrigationStartTime" : "06:00:00AM",
+  "irrigationEndTime" : "06:04:30"
 }
 ```
 
@@ -77,14 +75,35 @@ The mobile application sends the parameter ```command``` with each request, it c
   The application uses this command to read data of a deviece owned by the requesting user.
     This command requires the additional parameters: ```userName```, ```userPassword```, ```deviceId```, and ```query```.
     Where ```query``` is one or more comma separated keys of the data being requested.
-    ```query=updateFrequency``` returns the sample taking frequency of the soil sensor
-    ```query=history``` returns the whole history array.
-    ```query=history.length``` returns the number of samples saved on the server for this device.
-    ```query=history[INDEX]``` returns the sample pointed to in the array by the integer value INDEX.
-    ```query=history[FROM:TO]``` returns the sub-array list of samples starting from index FROM till index TO (inclusively).
+    
+    - Examples:
+     - ```query=type``` returns the type of the device (SOIL_SENSOR or IRRIGATION_CONTROLLER)
+     - ```query=dateAdded``` returns the manufacturing date of the device 
+    
+    - Examples for soil sensor devices:
+     - ```query=updateFrequency``` returns the sample taking frequency of the soil sensor
+     - ```query=history``` returns the whole history array.
+     - ```query=history.length``` returns the number of samples saved on the server for this device.
+     - ```query=history[INDEX]``` returns the sample pointed to in the array by the integer value INDEX.
+     - ```query=history[FROM:TO]``` returns the sub-array list of samples starting from index FROM till index TO (inclusively).
+    - Examples for irrigation controller:
+     - ```query=irrigation``` returns either ON or OFF
+     - ```query=switchingSystems``` returns something like 
+     ```JSON
+     {"responseType":"data","content":"BYREFERENCE"}
+     ```
+     - ```query=referenceHumidity``` returns something like
+     ```JSON
+     {"responseType":"data","content":45}
+     ```
 - ```edit```
   The application uses this command to edit some attributes/settings of a device owned by the requesting user.
-    This command requires the additional parameters: ```deviceId``` and ```userName```, ```userPassword```, and the data being updated.
+    This command requires the additional parameters: ```userName```, ```userPassword```, ```deviceId```, and the data being updated.
+    
+    Examples: (Only for irrigation controller)
+    - ```irrigation=ON```
+    - ```referenceHumidity=70``` sets the reference humidity (the percentage value is parsed as integer and the character '%' should not be appended)
+    - ```switchingSystems=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45```
 - ```add```
   The application uses this command to register a device to the requesting user.
     This command requires the additional parameters: ```deviceId```, ```devicePassword```, ```userName```, and ```userPassword```.
