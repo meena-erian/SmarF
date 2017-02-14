@@ -33,7 +33,7 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
 ####Soil Sensor data
 ```JSON
 {
-  "updateFrequency" : "10 mins",
+  "updateFrequency" : "10",
   "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "humidity" : HUMIDITY}, {"time" : TIMESTAMP, "location" : LOCATION, "humidity" : HUMIDITY}, ...]
 }
 ```
@@ -43,8 +43,8 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
   "irrigation" : ON/OFF,
   "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}, {"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}],
   "switchingSystems" : PERIODICALLY/BYREFERENCE/AUTO,
-  "referenceHumidity" : "60%",
-  "irrigationStartTime" : "06:00:00AM",
+  "referenceHumidity" : "60",
+  "irrigationStartTime" : "06:00:00",
   "irrigationEndTime" : "06:04:30"
 }
 ```
@@ -87,9 +87,10 @@ The mobile application sends the parameter ```command``` with each request, it c
      - ```query=history.length``` returns the number of samples saved on the server for this device.
      - ```query=history[INDEX]``` returns the sample pointed to in the array by the integer value INDEX.
      - ```query=history[FROM:TO]``` returns the sub-array list of samples starting from index FROM till index TO (inclusively).
-     
+     - ```query=history.last(N)``` returns the last N samples. eg ```query=history.last(5)``` returns the last 5 samples.
     - Examples for irrigation controller:
      - ```query=irrigation``` returns either ON or OFF
+     - ```query=history```
      - ```query=switchingSystems``` returns something like 
      ```JSON
      {"responseType":"data","content":"BYREFERENCE"}
@@ -98,13 +99,19 @@ The mobile application sends the parameter ```command``` with each request, it c
      ```JSON
      {"responseType":"data","content":45}
      ```
+     - ```query=irrigationStartTime```
+     - ```query=irrigationEndTime```
 - ```edit``` The application uses this command to edit some attributes/settings of a device owned by the requesting user.
     This command requires the additional parameters: ```userId```, ```userPassword```, ```deviceId```, and the data being updated.
     
-    Examples: (Only for irrigation controller)
+   - Examples for soil sensor:
+    - ```updateFrequency=MINUTS``` sets the sample taking frequency of the soil sensor in MINUTES.
+   - Examples irrigation controller:
     - ```irrigation=ON```
-    - ```referenceHumidity=70``` sets the reference humidity (the percentage value is parsed as integer and the character '%' should not be appended)
     - ```switchingSystems=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45```
+    - ```referenceHumidity=70``` sets the reference humidity (the percentage value is parsed as integer and the character '%' should not be appended)
+    - ```irrigationStartTime```
+    - ```irrigationEndTime```
 - ~~```add``` The application uses this command to register a device to the requesting user.
     This command requires the additional parameters: ```deviceId```, ```devicePassword```, ```userName```, and ```userPassword```.
 - ```remove```~~
