@@ -95,7 +95,7 @@ The mobile application sends the parameter ```command``` with each request, it c
      
      - ```query=history[INDEX]``` returns the sample pointed to in the array by the integer value INDEX.
      
-     - ```query=history[FROM:TO]``` returns the sub-array list of samples starting from index FROM till index TO (inclusively).
+     - ```query=history[OFFSET:LENGTH]``` returns the sub-array list of samples of size LENGTH starting from index OFFSET.
      
      - ```query=history.last(N)``` returns the last N samples. eg ```query=history.last(5)``` returns the last 5 samples.
      
@@ -112,7 +112,6 @@ The mobile application sends the parameter ```command``` with each request, it c
      ```
      
      - ```query=referenceHumidity``` returns something like:
-     
      
      ```JSON
      {"responseType":"data","content":45}
