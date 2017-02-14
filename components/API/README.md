@@ -77,62 +77,64 @@ The mobile application sends the parameter ```command``` with each request, it c
     
     - Examples for user data:
     
-     - ```query=devices``` returns an JSON array of the devices associated with the given user.
+     - ```query=devices``` returns an array of the devices associated with the given user.
      
     - Examples for any device:
     
-     - ```query=type``` returns the type of the device (SOIL_SENSOR or IRRIGATION_CONTROLLER).
+     - ```query=type``` returns a string value of the type of the device either SOIL_SENSOR or IRRIGATION_CONTROLLER.
      
-     - ```query=dateAdded``` returns the manufacturing date of the device.
+     - ```query=dateAdded``` returns an integer value of the UNIX timestamp of the manufacturing date of the device.
     
     - Examples for soil sensor devices:
     
-     - ```query=updateFrequency``` returns the sample taking frequency of the soil sensor.
+     - ```query=updateFrequency``` returns an integer value of the sample taking frequency of the soil sensor in minuts.
      
-     - ```query=history``` returns the whole history array.
+     - ```query=history``` returns the whole history array of the given device.
      
-     - ```query=history.length``` returns the number of samples saved on the server for this device.
+     - ```query=history.length``` returns an integer value of the number of samples saved on the server for this device.
      
      - ```query=history[INDEX]``` returns the sample pointed to in the array by the integer value INDEX.
      
      - ```query=history[OFFSET:LENGTH]``` returns the sub-array list of samples of size LENGTH starting from index OFFSET.
      
-     - ```query=history.last(N)``` returns the last N samples. eg ```query=history.last(5)``` returns the last 5 samples.
+     - ```query=history.last(N)``` returns an array of the last N samples. eg ```query=history.last(5)``` returns the last 5 samples. Note that query=history.last(1) returns an array too.
      
     - Examples for irrigation controller:
     
-     - ```query=irrigation``` returns either ON or OFF.
+     - ```query=irrigation``` returns a string, ON or OFF.
      
-     - ```query=history``` Might be useless.
+     - ```query=history``` Might be useless. (same as above but for irrigation controller history)
      
      - ```query=switchingSystem``` returns something like:
      
      ```JSON
-     {"responseType":"data","content":"BYREFERENCE"}
+     {"responseType":"Data","content":"BYREFERENCE"}
      ```
      
      - ```query=referenceHumidity``` returns something like:
      
      ```JSON
-     {"responseType":"data","content":45}
+     {"responseType":"Data","content":45}
      ```
      
-     - ```query=irrigationStartTime``` returns the irrigation start time in the formate HH:MM:SS. Used only when switchingSystem is set to PERIODICALLY.
+     - ```query=irrigationStartTime``` returns a string in the formate HH:MM:SS for the irrigation start time where HH for hours, MM for minutes and SS for seconds.
+     Used only when switchingSystem is set to PERIODICALLY.
      
-     - ```query=irrigationEndTime``` returns the irrigation end time.
+     - ```query=irrigationEndTime``` returns a string in the formate HH:MM:SS for the irrigation end time where HH for hours, MM for minutes and SS for seconds.
+     Used only when switchingSystem is set to PERIODICALLY.
      
 - ```edit``` The application uses this command to edit some attributes/settings of a device owned by the requesting user.
     This command requires the additional parameters: ```userId```, ```userPassword```, ```deviceId```, and the data being updated.
     
     - Examples for soil sensor:
     
-     - ```updateFrequency=MINUTS``` sets the sample taking frequency of the soil sensor in MINUTES.
+     - ```updateFrequency=30``` Adjusts the soil sensor to send one saple to the server each 30 minutes.
     
-    - Examples irrigation controller:
+    - Examples for irrigation controller:
     
      - ```irrigation=ON``` Forcefully turns irrigation on.
     
-     - ```switchingSystem=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45``` Sets a periodic irrigation system and specifies the time period of the day when irrigation is on.
+     - ```switchingSystem=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45``` Sets the specified irrigation controller to turn irrigation on from 08:30:00 PM to 08:37:45 PM daily.
     
      - ```referenceHumidity=70``` sets the reference humidity (the percentage value is parsed as integer and the character '%' should not be appended)
     
