@@ -113,6 +113,7 @@ The mobile application sends the parameter ```command``` with each request, it c
      
      - ```query=referenceHumidity``` returns something like:
      
+     
      ```JSON
      {"responseType":"data","content":45}
      ```
@@ -124,18 +125,20 @@ The mobile application sends the parameter ```command``` with each request, it c
 - ```edit``` The application uses this command to edit some attributes/settings of a device owned by the requesting user.
     This command requires the additional parameters: ```userId```, ```userPassword```, ```deviceId```, and the data being updated.
     
-   - Examples for soil sensor:
-   
-    - ```updateFrequency=MINUTS``` sets the sample taking frequency of the soil sensor in MINUTES.
+    - Examples for soil sensor:
     
-   - Examples irrigation controller:
-   
-    - ```irrigation=ON``` Forcefully turns irrigation on.
+     - ```updateFrequency=MINUTS``` sets the sample taking frequency of the soil sensor in MINUTES.
     
-    - ```switchingSystems=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45``` Sets a periodic irrigation system and specifies the time period of the day when irrigation is on.
+    - Examples irrigation controller:
     
-    - ```referenceHumidity=70``` sets the reference humidity (the percentage value is parsed as integer and the character '%' should not be appended)
+     - ```irrigation=ON``` Forcefully turns irrigation on.
+    
+     - ```switchingSystems=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45``` Sets a periodic irrigation system and specifies the time period of the day when irrigation is on.
+    
+     - ```referenceHumidity=70``` sets the reference humidity (the percentage value is parsed as integer and the character '%' should not be appended)
     
 - ~~```add``` The application uses this command to register a device to the requesting user. This command requires the additional parameters: ```deviceId```, ```devicePassword```, ```userName```, and ```userPassword```.~~
 - ~~```remove```~~~~
+
+
 Note that all commands are case-sensitive!
