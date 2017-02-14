@@ -1,7 +1,7 @@
 #Server-Side API
 
-It will be a single php webpage that the mobile application or any web browser can use to access our service.
-I'm working on an [HTML mirror for this documentation](https://meena-erian.github.io/SmarF/components/API/)
+~~It will be a single php webpage that the mobile application or any web browser can use to access our service.
+I'm working on an [HTML mirror for this documentation](https://meena-erian.github.io/SmarF/components/API/)~~
 
 ##Database structure
 The data base contains the following two lists of data:
@@ -74,45 +74,68 @@ The mobile application sends the parameter ```command``` with each request, it c
 
 - ```query``` The application uses this command to read data. It requires the query parameters ```userId```, ```userPassword``` and ```query``` for reading user data; Reading data of user devices require the additional parameter ```deviceId``` in addition to the previouse parameters.
     Where ```query``` can be set as in the following examples.
+    
     - Examples for user data:
+    
      - ```query=devices``` returns an JSON array of the devices associated with the given user.
      
     - Examples for any device:
-     - ```query=type``` returns the type of the device (SOIL_SENSOR or IRRIGATION_CONTROLLER)
-     - ```query=dateAdded``` returns the manufacturing date of the device 
+    
+     - ```query=type``` returns the type of the device (SOIL_SENSOR or IRRIGATION_CONTROLLER).
+     
+     - ```query=dateAdded``` returns the manufacturing date of the device.
     
     - Examples for soil sensor devices:
-     - ```query=updateFrequency``` returns the sample taking frequency of the soil sensor
+    
+     - ```query=updateFrequency``` returns the sample taking frequency of the soil sensor.
+     
      - ```query=history``` returns the whole history array.
+     
      - ```query=history.length``` returns the number of samples saved on the server for this device.
+     
      - ```query=history[INDEX]``` returns the sample pointed to in the array by the integer value INDEX.
+     
      - ```query=history[FROM:TO]``` returns the sub-array list of samples starting from index FROM till index TO (inclusively).
+     
      - ```query=history.last(N)``` returns the last N samples. eg ```query=history.last(5)``` returns the last 5 samples.
+     
     - Examples for irrigation controller:
-     - ```query=irrigation``` returns either ON or OFF
-     - ```query=history```
-     - ```query=switchingSystems``` returns something like 
+    
+     - ```query=irrigation``` returns either ON or OFF.
+     
+     - ```query=history``` Might be useless.
+     
+     - ```query=switchingSystems``` returns something like:
+     
      ```JSON
      {"responseType":"data","content":"BYREFERENCE"}
      ```
-     - ```query=referenceHumidity``` returns something like
+     
+     - ```query=referenceHumidity``` returns something like:
+     
      ```JSON
      {"responseType":"data","content":45}
      ```
-     - ```query=irrigationStartTime```
-     - ```query=irrigationEndTime```
+     
+     - ```query=irrigationStartTime``` returns the irrigation start time in the formate HH:MM:SS. Used only when switchingSystems is set to PERIODICALLY.
+     
+     - ```query=irrigationEndTime``` returns the irrigation end time.
+     
 - ```edit``` The application uses this command to edit some attributes/settings of a device owned by the requesting user.
     This command requires the additional parameters: ```userId```, ```userPassword```, ```deviceId```, and the data being updated.
     
    - Examples for soil sensor:
+   
     - ```updateFrequency=MINUTS``` sets the sample taking frequency of the soil sensor in MINUTES.
+    
    - Examples irrigation controller:
-    - ```irrigation=ON```
-    - ```switchingSystems=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45```
+   
+    - ```irrigation=ON``` Forcefully turns irrigation on.
+    
+    - ```switchingSystems=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45``` Sets a periodic irrigation system and specifies the time period of the day when irrigation is on.
+    
     - ```referenceHumidity=70``` sets the reference humidity (the percentage value is parsed as integer and the character '%' should not be appended)
-    - ```irrigationStartTime```
-    - ```irrigationEndTime```
-- ~~```add``` The application uses this command to register a device to the requesting user.
-    This command requires the additional parameters: ```deviceId```, ```devicePassword```, ```userName```, and ```userPassword```.
-- ```remove```~~
+    
+- ~~```add``` The application uses this command to register a device to the requesting user. This command requires the additional parameters: ```deviceId```, ```devicePassword```, ```userName```, and ```userPassword```.~~
+- ~~```remove```~~~~
 Note that all commands are case-sensitive!
