@@ -42,7 +42,7 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
 {
   "irrigation" : ON/OFF,
   "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}, {"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}],
-  "switchingSystems" : PERIODICALLY/BYREFERENCE/AUTO,
+  "switchingSystem" : PERIODICALLY/BYREFERENCE/AUTO,
   "referenceHumidity" : "60",
   "irrigationStartTime" : "06:00:00",
   "irrigationEndTime" : "06:04:30"
@@ -105,7 +105,7 @@ The mobile application sends the parameter ```command``` with each request, it c
      
      - ```query=history``` Might be useless.
      
-     - ```query=switchingSystems``` returns something like:
+     - ```query=switchingSystem``` returns something like:
      
      ```JSON
      {"responseType":"data","content":"BYREFERENCE"}
@@ -117,7 +117,7 @@ The mobile application sends the parameter ```command``` with each request, it c
      {"responseType":"data","content":45}
      ```
      
-     - ```query=irrigationStartTime``` returns the irrigation start time in the formate HH:MM:SS. Used only when switchingSystems is set to PERIODICALLY.
+     - ```query=irrigationStartTime``` returns the irrigation start time in the formate HH:MM:SS. Used only when switchingSystem is set to PERIODICALLY.
      
      - ```query=irrigationEndTime``` returns the irrigation end time.
      
@@ -132,7 +132,7 @@ The mobile application sends the parameter ```command``` with each request, it c
     
      - ```irrigation=ON``` Forcefully turns irrigation on.
     
-     - ```switchingSystems=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45``` Sets a periodic irrigation system and specifies the time period of the day when irrigation is on.
+     - ```switchingSystem=PERIODICALLY&irrigationStartTime=20:30:00&irrigationEndTime=20:37:45``` Sets a periodic irrigation system and specifies the time period of the day when irrigation is on.
     
      - ```referenceHumidity=70``` sets the reference humidity (the percentage value is parsed as integer and the character '%' should not be appended)
     
