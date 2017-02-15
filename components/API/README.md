@@ -82,11 +82,11 @@ The mobile application sends the parameter ```command``` with each request, it c
     
      - ```query=devices``` returns an array of the devices associated with the given user.
      
-     - ```query=devices.byType(STRING type)```
+     - ```query=devices.byType(STRING type)``` same as devices except that it filters devices by type.
      
-     - ```query=name```
+     - ```query=name``` returns a string of the user name.
      
-     - ```query=dateAdded``` 
+     - ```query=dateAdded``` returns a UNIX timestamp of the registration date of the requesting user.
      
     - Examples for any device:
     
@@ -159,7 +159,7 @@ The mobile application sends the parameter ```command``` with each request, it c
 
 ###Example request query strings
 ---
-```C
+```C++
 ?command=query&userId=mina&userPassword=mina123mina&deviceId=ss1&query=type
 ```
 **result**
@@ -170,7 +170,7 @@ The mobile application sends the parameter ```command``` with each request, it c
 }
 ```
 ---
-```C
+```C++
 ?command=query&userId=mina&userPassword=mina123mina&deviceId=ss1&query=history.last(3)
 ```
 **result**
@@ -185,7 +185,7 @@ The mobile application sends the parameter ```command``` with each request, it c
 }
 ```
 ---
-```C
+```C++
 ?command=query&userId=mina&userPassword=mina123mina&deviceId=ss1&query=updateFrequency
 ```
 **result**
@@ -196,9 +196,10 @@ The mobile application sends the parameter ```command``` with each request, it c
 }
 ```
 ---
-```C
+```C++
 ?command=edit&userId=mina&userPassword=mina123mina&deviceId=ic1&referenceHumidity=58
 ```
+**result**
 ```JSON
 {
   "responseType":"Info",
