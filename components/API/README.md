@@ -9,20 +9,22 @@ The data base contains the following two lists of data:
 ###Users JSON data
 ```JSON
 {
-  "id" : USER ID,
-  "name" : USER NAME,
-  "password" : USER PASSWORD,
-  "dateAdded" : DATE,
-  "devices" : [{"deviceId" : DEVICE ID, "dateAdded" : TIMESTAMP}, {"deviceId" : DEVICE ID, "dateAdded" : TIMESTAMP} ...]
+  "id" : STRING,
+  "name" : STRING,
+  "password" : STRING,
+  "dateAdded" : TIMESTAMP,
+  "devices" : [{"deviceId" : STRING, "dateAdded" : TIMESTAMP}, {"deviceId" : STRING, "dateAdded" : TIMESTAMP} ...]
 }
 ```
 
 ###Devices common JSON data
 ```JSON
 {
-  "id" : DEVICE ID,
-  "password" : DEVICE PASSWORD,
-  "dateAdded" : DATE,
+  "id" : STRING,
+  "name" : STRING,
+  "password" : STRING,
+  "dateAdded" : TIMESTAMP,
+  "network" : [{"ssid" : STRING, "password" : STRING}, {"ssid" : STRING, "password" : STRING}...]
   "type" : SOIL_SENSOR/IRRIGATION_CONTROLLER/...,
   PER_TYPE_DATA
 }
@@ -34,13 +36,14 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
 ```JSON
 {
   "updateFrequency" : "10",
-  "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "humidity" : HUMIDITY}, {"time" : TIMESTAMP, "location" : LOCATION, "humidity" : HUMIDITY}, ...]
+  "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "humidity" : INTIGER}, {"time" : TIMESTAMP, "location" : LOCATION, "humidity" : INTIGER}, ...]
 }
 ```
 ####Irrigation Controller data
 ```JSON
 {
-  "irrigation" : ON/OFF,
+  "irrigation" : STRING, //ON/OFF
+  "sensors" : [{"id" : STRING},{"id" : STRING},...],
   "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}, {"time" : TIMESTAMP, "location" : LOCATION, "operation" : SWITCHED ON/OFF}],
   "switchingSystem" : PERIODICALLY/BYREFERENCE/AUTO,
   "referenceHumidity" : "60",
@@ -79,11 +82,22 @@ The mobile application sends the parameter ```command``` with each request, it c
     
      - ```query=devices``` returns an array of the devices associated with the given user.
      
+     - ```query=devices.byType(STRING type)```
+     
+     - ```query=name```
+     
+     - ```query=dateAdded``` 
+     
     - Examples for any device:
     
      - ```query=type``` returns a string value of the type of the device either SOIL_SENSOR or IRRIGATION_CONTROLLER.
      
      - ```query=dateAdded``` returns an integer value of the UNIX timestamp of the manufacturing date of the device.
+     
+     - ```query=name``` returns a string of the name of the specified device.
+     
+     - ```query=network``` returns an array of the networks saved in the device.
+     
     
     - Examples for soil sensor devices:
     
@@ -102,6 +116,8 @@ The mobile application sends the parameter ```command``` with each request, it c
     - Examples for irrigation controller:
     
      - ```query=irrigation``` returns a string, ON or OFF.
+     
+     - ```query=sensors``` returns an array of the soil sensors linkd to the specified irrigation controller.
      
      - ```query=history``` Might be useless. (same as above but for irrigation controller history)
      
@@ -141,5 +157,58 @@ The mobile application sends the parameter ```command``` with each request, it c
 - ~~```add``` The application uses this command to register a device to the requesting user. This command requires the additional parameters: ```deviceId```, ```devicePassword```, ```userName```, and ```userPassword```.~~
 - ~~```remove```~~~~
 
+###Example request query strings
+---
+```C
+?command=query&userId=mina&userPassword=mina123mina&deviceId=ss1&query=type
+```
+**result**
+```JSON
+{
+  "responseType":"Data",
+  "content":"SOIL_SENSOR"
+}
+```
+---
+```C
+?command=query&userId=mina&userPassword=mina123mina&deviceId=ss1&query=history.last(3)
+```
+**result**
+```JSON
+{
+  "responseType":"Data",
+  "content":[
+    {"time":1487009825,"location":null,"humidity":"64"},
+    {"time":1487009831,"location":null,"humidity":"65"},
+    {"time":1487009836,"location":null,"humidity":"64"}
+  ]
+}
+```
+---
+```C
+?command=query&userId=mina&userPassword=mina123mina&deviceId=ss1&query=updateFrequency
+```
+**result**
+```JSON
+{
+  "responseType":"Data",
+  "content":"35"
+}
+```
+---
+```C
+?command=edit&userId=mina&userPassword=mina123mina&deviceId=ic1&referenceHumidity=58
+```
+```JSON
+{
+  "responseType":"Info",
+  "content":"Data updated successfully"
+}
+```
+---
 
-Note that all commands are case-sensitive!
+##Remarks
+ - The **deviceId** can also be used to identify its type- all devices prefixed by "**ss**" are soil sensors and all devices prefixed by **ic** are irrication controllers.
+ - All parameters and values are case-sensitive.
+ - All **edit** commands returns ```{"responseType":"Info","content":"Data updated successfully"}``` on success.
+
