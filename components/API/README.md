@@ -144,7 +144,7 @@ The mobile application sends the parameter ```command``` with each request, it c
     
     - Examples for soil sensor:
     
-     - ```updateFrequency=30``` Adjusts the soil sensor to send one saple to the server each 30 minutes.
+     - ```updateFrequency=30``` Adjusts the soil sensor to send one sample to the server each 30 minutes.
     
     - Examples for irrigation controller:
     
@@ -159,6 +159,45 @@ The mobile application sends the parameter ```command``` with each request, it c
 
 ###Example request query strings
 ---
+**List devices associated with the given user**
+```C++
+?command=query&userId=mina&userPassword=mina123mina&query=devices
+```
+**result**
+```JSON
+{
+	"responseType":"Data",
+	"content":[
+		{
+			"deviceId":"ss1",
+			"dateAdded":1487006069
+		},
+		{
+			"deviceId":"ic1",
+			"dateAdded":1487006069
+		}
+	]
+}
+```
+---
+**List devices of the given type associated with the given user**
+```C++
+?command=query&userId=mina&userPassword=mina123mina&query=devices.byType(SOIL_SENSOR)
+```
+**result**
+```JSON
+{
+	"responseType":"Data",
+	"content":[
+		{
+			"deviceId":"ss1",
+			"dateAdded":1487006069
+		}
+	]
+}
+```
+---
+**Getting device type by id**
 ```C++
 ?command=query&userId=mina&userPassword=mina123mina&deviceId=ss1&query=type
 ```
@@ -170,6 +209,7 @@ The mobile application sends the parameter ```command``` with each request, it c
 }
 ```
 ---
+**Getting last sample[s] read by soil sensor**
 ```C++
 ?command=query&userId=mina&userPassword=mina123mina&deviceId=ss1&query=history.last(3)
 ```
@@ -185,6 +225,7 @@ The mobile application sends the parameter ```command``` with each request, it c
 }
 ```
 ---
+**Getting sample update interval in milliseconds for soil sensor**
 ```C++
 ?command=query&userId=mina&userPassword=mina123mina&deviceId=ss1&query=updateFrequency
 ```
@@ -196,6 +237,7 @@ The mobile application sends the parameter ```command``` with each request, it c
 }
 ```
 ---
+**Setting reference humidity of irrigation controller**
 ```C++
 ?command=edit&userId=mina&userPassword=mina123mina&deviceId=ic1&referenceHumidity=58
 ```
@@ -207,6 +249,29 @@ The mobile application sends the parameter ```command``` with each request, it c
 }
 ```
 ---
+**Getting reference humidity of irrigation controller**
+```C++
+?command=query&userId=mina&userPassword=mina123mina&deviceId=ic1&referenceHumidity=58
+```
+**result**
+```JSON
+{
+  "responseType":"Data",
+  "content":"Data updated successfully"
+}
+```
+---
+
+```C++
+?command=edit&userId=mina&userPassword=mina123mina&deviceId=ic1&referenceHumidity=58
+```
+**result**
+```JSON
+{
+  "responseType":"Data",
+  "content":"Data updated successfully"
+}
+```
 
 ##Remarks
  - The **deviceId** can also be used to identify its type- all devices prefixed by "**ss**" are soil sensors and all devices prefixed by **ic** are irrication controllers.
