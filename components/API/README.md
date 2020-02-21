@@ -1,30 +1,48 @@
-#Server-Side API
+# Server-Side API
 
 ~~It will be a single php webpage that the mobile application or any web browser can use to access our service.
 I'm working on an [HTML mirror for this documentation](https://meena-erian.github.io/SmarF/components/API/)~~
 
-##Database structure
+## Database structure
 The data base contains the following two lists of data:
 
-###Users JSON data
+### Users JSON data
 ```JSON
 {
   "id" : STRING,
   "name" : STRING,
   "password" : STRING,
   "dateAdded" : TIMESTAMP,
-  "devices" : [{"deviceId" : STRING, "dateAdded" : TIMESTAMP}, {"deviceId" : STRING, "dateAdded" : TIMESTAMP} ...]
+  "devices" : [
+    {
+        "deviceId" : STRING,
+        "dateAdded" : TIMESTAMP
+    }, 
+    {
+        "deviceId" : STRING,
+        "dateAdded" : TIMESTAMP
+    } ...
+  ]
 }
 ```
 
-###Devices common JSON data
+### Devices common JSON data
 ```JSON
 {
   "id" : STRING,
   "name" : STRING,
   "password" : STRING,
   "dateAdded" : TIMESTAMP,
-  "network" : [{"ssid" : STRING, "password" : STRING}, {"ssid" : STRING, "password" : STRING}...]
+  "network" : [
+      {
+        "ssid" : STRING,
+        "password" : STRING
+      }, 
+      {
+        "ssid" : STRING, 
+        "password" : STRING
+      }...
+  ]
   "type" : SOIL_SENSOR/IRRIGATION_CONTROLLER/...,
   PER_TYPE_DATA
 }
@@ -32,14 +50,25 @@ The data base contains the following two lists of data:
 
 Where all upper case words will be replaced by equivalent values. And **PER_TYPE_DATA** in Devices data will be replaced by one of the following.
 
-####Soil Sensor data
+#### Soil Sensor data
 ```JSON
 {
   "updateFrequency" : "10",
-  "history" : [{"time" : TIMESTAMP, "location" : LOCATION, "humidity" : INTIGER}, {"time" : TIMESTAMP, "location" : LOCATION, "humidity" : INTIGER}, ...]
+  "history" : [
+      {
+        "time" : TIMESTAMP,
+        "location" : LOCATION,
+        "humidity" : INTIGER
+      }, 
+      {
+        "time" : TIMESTAMP,
+        "location" : LOCATION,
+        "humidity" : INTIGER
+      }, ...
+  ]
 }
 ```
-####Irrigation Controller data
+#### Irrigation Controller data
 ```JSON
 {
   "irrigation" : STRING, //ON/OFF
@@ -55,7 +84,7 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
 ---
 ---
 
-##Operation Rules
+## Operation Rules
 - Once a device is created and ready for sale, it's saved to the database.
 - Only the device and the server shares the device password for secure communication between them.
 - The device owner can connect to the device directly using wifi to set:
@@ -70,7 +99,7 @@ Where all upper case words will be replaced by equivalent values. And **PER_TYPE
 - ~~The first device owner of an irrigation controler can edit its settings.~~
 
 
-##Mobile JSON API
+## Mobile JSON API
 When any web browser requests the domain name, the server responds by the HTML version of the application; When the mobile application requests the domain name, the server responds by a JSON.
 
 The mobile application sends the parameter ```command``` with each request, it can be any of the following values:
@@ -157,7 +186,7 @@ The mobile application sends the parameter ```command``` with each request, it c
 - ~~```add``` The application uses this command to register a device to the requesting user. This command requires the additional parameters: ```deviceId```, ```devicePassword```, ```userName```, and ```userPassword```.~~
 - ~~```remove```~~~~
 
-###Example request query strings
+### Example request query strings
 ---
 **List devices associated with the given user**
 ```C++
@@ -273,7 +302,7 @@ The mobile application sends the parameter ```command``` with each request, it c
 }
 ```
 
-##Remarks
+## Remarks
  - The **deviceId** can also be used to identify its type- all devices prefixed by "**ss**" are soil sensors and all devices prefixed by **ic** are irrication controllers.
  - All parameters and values are case-sensitive.
  - All **edit** commands returns ```{"responseType":"Info","content":"Data updated successfully"}``` on success.
