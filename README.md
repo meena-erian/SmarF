@@ -12,3 +12,4 @@ I'm currently woking on an unofficial temporrary [website](https://meena-erian.g
  - [ ] Designing website theme and colors possibliy in jpg formate. (it must include navigation, header, and footer sections)
  - [ ] Determining best network connection devices.
  - [ ] Determining best power source for products.
+
